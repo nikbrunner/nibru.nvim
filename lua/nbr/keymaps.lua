@@ -138,7 +138,7 @@ for i = 1, 9 do
 end
 
 -- nbr.nvim Group
-set("n", "<leader>ax", "<cmd>Lazy<CR>", { desc = "[X]tensions" })
+set("n", "<leader>ap", "<cmd>Lazy<CR>", { desc = "[P]lugins" })
 set("n", "<leader>al", "<cmd>Mason<CR>", { desc = "[L]anguage Servers" })
 set("n", "<leader>ail", "<cmd>LspInfo<CR>", { desc = "[L]anague server information" })
 set("n", "<leader>aR", function()
