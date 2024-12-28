@@ -69,13 +69,13 @@ M.list_paths = function()
     local win_width = math.min(0.9, (max_length / vim.o.columns) + 0.1)
 
     fzf.fzf_exec(entries, {
-        prompt = "Copy File Meta> ",
+        prompt = "Yank Document Meta> ",
         previewer = false,
         winopts = {
             row = 0.85,
             col = 0.5,
             height = 0.35,
-            width = win_width,
+            -- width = win_width,
             preview = { hidden = "hidden" },
         },
         actions = {

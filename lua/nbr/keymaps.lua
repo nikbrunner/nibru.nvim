@@ -169,9 +169,9 @@ set("n", "<leader>aR", function()
 end, { desc = "[R]estart language servers" })
 
 -- [C] Action Group
-set({ "n", "v" }, "<leader>cc", function()
+set({ "n", "v" }, "<leader>dy", function()
     lib.copy.list_paths()
-end, { desc = "Copy" })
+end, { desc = "[Y]ank property" })
 
 -- Only native Vim lsp keymaps are defined here.
 -- Lsp Mappings which are depended on a plugin are defined in the plugin spec file with the same event name.
