@@ -139,7 +139,7 @@ M.spec = {
         local Snacks = require("snacks")
 
         return {
-        -- stylua: ignore start
+            -- stylua: ignore start
             { "<C-/>",               function() Snacks.terminal() end, desc = "Toggle Terminal" },
             { "]]",                  function() Snacks.words.jump(vim.v.count1) end, desc = "Next Reference" },
             { "[[",                  function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference" },
@@ -160,7 +160,6 @@ M.spec = {
                         width = 0.6,
                         height = 0.6,
                         wo = {
-                            border = "solid",
                             spell = false,
                             wrap = false,
                             signcolumn = "yes",
