@@ -34,7 +34,29 @@ set("t", "<Esc>", "<C-\\><C-n>", { desc = "Exit Terminal" })
 set("n", "<C-o>", "<C-o>zz", { desc = "Move back in jump list" })
 set("n", "<C-i>", "<C-i>zz", { desc = "Move forward in jump list" })
 
-set("n", "yc", "yy<cmd>normal gcc<CR>p", { desc = "Duplicate line" })
+set("n", "yc", function()
+    -- store the current column
+    local col = vim.fn.col(".")
+    -- duplicate the line
+    vim.cmd("norm yy")
+    -- comment out the duplicated line
+    vim.cmd("norm gcc")
+    -- paste the duplicated line below the current line
+    vim.cmd("norm p")
+    -- move the cursor to the original column
+    vim.fn.cursor(vim.fn.line("."), col)
+end, { desc = "Dupe line (Comment out old one)" })
+
+set("n", "yp", function()
+    -- store the current column
+    local col = vim.fn.col(".")
+    -- duplicate the line
+    vim.cmd("norm yy")
+    -- paste the duplicated line below the current line
+    vim.cmd("norm p")
+    -- move the cursor to the original column
+    vim.fn.cursor(vim.fn.line("."), col)
+end, { desc = "Duplicate line" })
 
 set("n", "vA", "ggVG", { desc = "Select All" })
 set("n", "yA", "ggVGy", { desc = "Copy All" })
