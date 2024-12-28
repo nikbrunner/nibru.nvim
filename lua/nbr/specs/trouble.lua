@@ -59,12 +59,12 @@ M.spec = {
             end,
             desc = "Symbol References",
         },
-        { "<leader>di", "<cmd>Trouble lsp toggle<cr>", desc = "Symbol Information" },
-        { "<leader>dci", "<cmd>Trouble lsp_incoming_calls<cr>", desc = "Calls Incoming" },
-        { "<leader>dco", "<cmd>Trouble lsp_outgoing_calls<cr>", desc = "Calls Outgoing" },
-        { "<leader>dd", "<cmd>Trouble diagnostics toggle  filter.buf=0<cr>", desc = "Document" },
-        { "<leader>dw", "<cmd>Trouble diagnostics toggle<cr>", desc = "Workspace" },
-        { "<leader>dt", "<cmd>Trouble symbols toggle<cr>", desc = "Symbols" },
+        -- { "<leader>di", "<cmd>Trouble lsp toggle<cr>", desc = "Symbol Information" },
+        -- { "<leader>dci", "<cmd>Trouble lsp_incoming_calls<cr>", desc = "Calls Incoming" },
+        -- { "<leader>dco", "<cmd>Trouble lsp_outgoing_calls<cr>", desc = "Calls Outgoing" },
+        { "<leader>dp", "<cmd>Trouble diagnostics toggle  filter.buf=0<cr>", desc = "[P]roblems in Document" },
+        { "<leader>wp", "<cmd>Trouble diagnostics toggle<cr>", desc = "[P]roblems in Workspace" },
+        -- { "<leader>dt", "<cmd>Trouble symbols toggle<cr>", desc = "Symbols" },
         {
             "[q",
             function()

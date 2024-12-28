@@ -120,7 +120,7 @@ M.spec = {
             pattern = "VeryLazy",
             callback = function()
                 -- stylua: ignore start
-                Snacks.toggle.dim():map("<leader>ad")
+                Snacks.toggle.dim():map("<leader>ad", { desc = "[D]imm Mode" })
                 Snacks.toggle.diagnostics():map("<leader>ud")
                 Snacks.toggle.line_number():map("<leader>ul")
                 Snacks.toggle.inlay_hints():map("<leader>uh")
