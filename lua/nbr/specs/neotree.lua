@@ -5,6 +5,7 @@ M.spec = {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v3.x",
     event = "VeryLazy",
+    enabled = false,
     dependencies = {
         "nvim-lua/plenary.nvim",
         "MunifTanjim/nui.nvim",

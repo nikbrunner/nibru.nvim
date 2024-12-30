@@ -24,7 +24,7 @@ return {
         },
 
         icons = {
-            mappings = false, -- Disable all icons
+            mappings = true, -- Disable all icons
             separator = "", -- symbol used between a key and it's label
             rules = {
                 { plugin = "yazi.nvim", icon = " " },
@@ -43,41 +43,39 @@ return {
             {
                 mode = { "n", "v" },
                 -- v3
+                { "<leader>,", icon = " " },
+                { "<leader>;", icon = " " },
+
+                -- [A]pp
                 { "<leader>a", group = "[A]pp", icon = " " },
                 { "<leader>as", group = "[S]ettings", icon = " " },
+                { "<leader>ai", group = "[I]nfo", icon = " " },
+
+                -- [W]orkspace
                 { "<leader>w", group = "[W]orkspace", icon = "󰲃 " },
                 { "<leader>wv", group = "[V]ersion Control", icon = "󰋚 " },
+                { "<leader>wS", group = "[S]ession", icon = " " },
+
+                -- [D]ocument
                 { "<leader>d", group = "[D]ocument", icon = "󱔘 " },
                 { "<leader>dv", group = "[V]ersion Control", icon = "󰋚 " },
 
+                -- [H]unk
+                { "<leader>h", group = "[H]unk", icon = " " },
+
+                -- [?]Help
+                { "<leader>?", group = "[?]elp", icon = " " },
+
                 -- v2
                 { "<leader>c", group = "Code", icon = " " },
-                { "<leader>.", group = "TMUX", icon = "󱂬 " },
-                { "<leader>;", icon = " " },
-                { "<leader>N", icon = "󱀂 " },
-                { "<leader>U", icon = "󰣜 " },
-                { "<leader>c", group = "Code", icon = " " },
-                { "<leader>cl", group = "Log", icon = " " },
-                { "<leader>cp", group = "Picker", icon = "󱥚 " },
-                { "<leader>dc", group = "Calls", icon = " " },
-                { "<leader>e", group = "Explorer", icon = "󰙅" },
-                { "<leader>g", group = "Git", icon = " " },
-                { "<leader>gC", group = "Checkout", icon = " " },
-                { "<leader>r", group = "REST", icon = "󰿘 " },
-                { "<leader>h", group = "[H]unk", icon = " " },
-                { "<leader>i", group = "Intelligence", icon = "󰧑 " },
-                { "<leader>j", group = "Jumps", icon = "󰴪 " },
-                { "<leader>o", group = "Obsidian", icon = " " },
-                { "<leader>s", group = "Search", icon = " " },
-                { "<leader>S", group = "Session", icon = " " },
-                { "<leader>m", group = "Marks", icon = "󰍐 " },
-                { "<leader>n", group = "Notes", icon = " " },
-                { "<leader>u", group = "UI", icon = "󰙵 " },
-                { "<leader>ai", group = "[I]nfo", icon = " " },
-                -- { "[", group = "Prev", icon = "󰒮 " },
-                -- { "]", group = "Next", icon = "󰒭 " },
-                { "g", group = "G", icon = "󱡓 " },
-                { "S", group = "Surround", icon = "󰅩 " },
+                { "<leader>cl", group = "[L]og", icon = " " },
+                { "<leader>cp", group = "[P]icker", icon = "󱥚 " },
+                { "<leader>g", group = "[G]it", icon = " " },
+                { "<leader>r", group = "[R]EST", icon = "󰿘 " },
+                { "<leader>i", group = "[I]ntelligence", icon = "󰧑 " },
+                { "<leader>s", group = "[S]earch", icon = " " },
+                { "<leader>n", group = "[N]otes", icon = " " },
+                { "<leader>u", group = "[U]I", icon = "󰙵 " },
             },
         },
     },

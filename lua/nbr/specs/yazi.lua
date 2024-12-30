@@ -9,18 +9,18 @@ return {
     event = "VeryLazy",
     keys = {
         {
-            "-",
+            "<leader>we",
             function()
                 require("yazi").yazi()
             end,
-            desc = "Manager",
+            desc = "[E]xplorer",
         },
         {
-            "_",
+            "<leader>wE",
             function()
                 require("yazi").yazi(nil, vim.fn.getcwd())
             end,
-            desc = "Manager (CWD)",
+            desc = "[E]xplorer (CWD)",
         },
     },
 

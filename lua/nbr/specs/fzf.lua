@@ -118,37 +118,43 @@ M.keys = function()
 
     return {
         -- stylua: ignore start
-        { "<leader>??",       function() fzfLua.help_tags() end, desc = "Help Tags" },
-        { "<leader>?m",       function() fzfLua.man_pages() end, desc = "Man Pages" },
+        { "z=",               function() fzfLua.spell_suggest({ winopts = { height = 0.35, width = 0.65 } }) end, desc = "Spelling Suggestions" },
+        { "<leader>;",        function() fzfLua.commands({ winopts = M.winopts.md.vertical }) end, desc = "Command Palette" },
+        { "<leader><tab>",    function() fzfLua.tabs() end, desc = "Tab Fuzzy Find" },
+        -- { "<leader>s.",       function() fzfLua.resume() end, desc = "Resume" },
 
+        -- [?]Help
+        { "<leader>?t",       function() fzfLua.help_tags() end, desc = "[T]ags" },
+        { "<leader>?m",       function() fzfLua.man_pages() end, desc = "[M]an Pages" },
+
+        -- [A]pp
         { "<leader>ak",       function() fzfLua.keymaps() end, desc = "[K]eybindings" },
+        { "<leader>aj",        function() fzfLua.jumps({ winopts = M.winopts.md.vertical }) end, desc = "[J]umps" },
         { "<leader>at",       function() fzfLua.colorschemes() end, desc = "[T]hemes" },
+        { "<leader>ar",       function() fzfLua.oldfiles({ cwd_only = false, prompt = "Recent Files (Anywhere): ", winopts = M.winopts.sm.no_preview }) end, desc = "[R]ecent Documents (across Workspaces)" },
         { "<leader>aT",       function() fzfLua.awesome_colorschemes() end, desc = "[T]hemes (Awesome)" },
 
+        -- [W]orkspace
         { "<leader>wd",       function() fzfLua.files({ winopts = M.winopts.md.flex }) end, desc = "[D]ocument in Workspace" },
-        { "<leader>wr",       function() fzfLua.oldfiles({ cwd_only = true, prompt = "Recent Files (CWD): ", winopts = M.winopts.sm.no_preview }) end, desc = "[R]ecently visited Documents" },
+        { "<leader>ww",       function() fzfLua.grep_cword() end, mode = { "n", "v" }, desc = "[W]ord in Workspace" },
+        { "<leader>wr",       function() fzfLua.oldfiles({ cwd_only = true, prompt = "Recent Files (CWD): ", winopts = M.winopts.sm.no_preview }) end, desc = "[R]ecent Documents" },
         { "<leader>wt",       function() fzfLua.live_grep({ winopts = M.winopts.md.vertical }) end, desc = "[T]ext in Workspace" },
-        { "<leader>wj",       function() fzfLua.jumps({ winopts = M.winopts.md.vertical }) end, desc = "[J]umps" },
         { "<leader>wm",       function() fzfLua.git_status({ winopts = M.winopts.lg.vertical }) end, desc = "[M]odified Documents" },
         { "<leader>ws",       function() fzfLua.lsp_live_workspace_symbols({ winopts = M.winopts.lg.vertical }) end, desc = "[S]ymbol in Workspace" },
         { "<leader>wvb",      function() fzfLua.git_branches() end, desc = "[B]ranches" },
         { "<leader>wvc",      function() fzfLua.git_commits() end, desc = "[C]ommits" },
         { "<leader>wvt",      function() fzfLua.git_tags() end, desc = "[T]ags" },
-        { "<leader>wR",       function() fzfLua.oldfiles({ cwd_only = false, prompt = "Recent Files (Anywhere): ", winopts = M.winopts.sm.no_preview }) end, desc = "[R]ecently visited Documents (outside Workspace)" },
 
+        -- [D]ocument
         { "<leader>da",       M.find_related_files, desc = "[A]ssociated documents", },
         { "<leader>dt",       function() fzfLua.lgrep_curbuf({ winopts = M.winopts.md.flex }) end, desc = "[T]ext" },
         { "<leader>ds",       function() fzfLua.lsp_document_symbols({ winopts = M.winopts.lg.vertical }) end, desc = "[S]ymbols" },
         { "<leader>dc",       function() fzfLua.changes() end, desc = "[C]hanges" },
 
-        { "<leader>;",        function() fzfLua.commands({ winopts = M.winopts.md.vertical }) end, desc = "Commands" },
-        { "<leader><tab>",    function() fzfLua.tabs() end, desc = "Tab Fuzzy Find" },
-        -- { "<leader>s.",       function() fzfLua.resume() end, desc = "Resume" },
+        -- v2
         { "<leader>sH",       function() fzfLua.highlights() end, desc = "Highlights" },
-        { "<leader>sw",       function() fzfLua.grep_cword() end, mode = { "n", "v" }, desc = "Word" },
-        { "<leader>sm",       function() fzfLua.marks({ winopts = M.winopts.lg.vertical }) end, desc = "Marks" },
-        { "<leader>s'",       function() fzfLua.registers({ winopts = M.winopts.lg.vertical }) end, mode = { "n", "v" }, desc = "Registers" },
-        { "z=",               function() fzfLua.spell_suggest({ winopts = { height = 0.35, width = 0.65 } }) end, desc = "Spelling Suggestions" },
+        -- { "<leader>sm",       function() fzfLua.marks({ winopts = M.winopts.lg.vertical }) end, desc = "Marks" },
+        -- { "<leader>s'",       function() fzfLua.registers({ winopts = M.winopts.lg.vertical }) end, mode = { "n", "v" }, desc = "Registers" },
         -- stylua: ignore end
     }
 end

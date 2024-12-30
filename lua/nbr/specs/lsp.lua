@@ -112,6 +112,22 @@ M.specs = {
                             },
                         })
                     end,
+
+                    -- Configure `cssls` to avoid Tailwind projects
+                    ["cssls"] = function()
+                        setup_server("cssls", {
+                            filetypes = { "css", "scss", "less" },
+                            root_dir = function(fname)
+                                local util = require("lspconfig.util")
+                                -- Skip cssls for projects with a tailwind.config.js file
+                                if util.root_pattern("tailwind.config.js")(fname) then
+                                    return nil
+                                end
+                                return vim.fs.dirname(vim.fs.find(".git", { path = fname, upward = true })[1])
+                                    or vim.fs.dirname(fname)
+                            end,
+                        })
+                    end,
                 },
             }
         end,
