@@ -38,7 +38,7 @@ M.spec = {
     },
     keys = {
         {
-            "<leader>cf",
+            "gq",
             mode = { "n", "x" },
             function()
                 require("conform").format({
@@ -50,7 +50,7 @@ M.spec = {
             desc = "Format",
         },
         {
-            "<leader>cF",
+            "<leader>asf",
             function()
                 if vim.g.vin_autoformat_enabled then
                     vim.g.vin_autoformat_enabled = false
@@ -64,7 +64,7 @@ M.spec = {
                     vim.notify("Autoformat disabled", vim.log.levels.INFO, { title = "Conform" })
                 end
             end,
-            desc = "Format (Toggle)",
+            desc = "Toggle Format on Save",
         },
         {
             "<leader>aif",

@@ -44,6 +44,7 @@ return {
                 mode = { "n", "v" },
                 -- v3
                 { "<leader>a", group = "[A]pp", icon = " " },
+                { "<leader>as", group = "[S]ettings", icon = " " },
                 { "<leader>w", group = "[W]orkspace", icon = "󰲃 " },
                 { "<leader>wv", group = "[V]ersion Control", icon = "󰋚 " },
                 { "<leader>d", group = "[D]ocument", icon = "󱔘 " },
