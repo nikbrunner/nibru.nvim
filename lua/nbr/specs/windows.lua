@@ -15,7 +15,7 @@ M.spec = {
             desc = "Maximize Split",
         },
         {
-            "<leader>ua",
+            "<leader>aoa",
             function()
                 vim.cmd("WindowsToggleAutowidth")
                 vim.notify("Windows Autowidth Toggled")

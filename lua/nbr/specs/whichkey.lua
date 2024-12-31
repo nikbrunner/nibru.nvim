@@ -42,14 +42,12 @@ return {
         spec = {
             {
                 mode = { "n", "v" },
-                -- v3
-                { "<leader>,", icon = " " },
-                { "<leader>;", icon = " " },
 
                 -- [A]pp
                 { "<leader>a", group = "[A]pp", icon = " " },
-                { "<leader>as", group = "[S]ettings", icon = " " },
+                { "<leader>ao", group = "[O]ptions", icon = " " },
                 { "<leader>ai", group = "[I]nfo", icon = " " },
+                { "<leader>ah", group = "[H]elp", icon = " " },
 
                 -- [W]orkspace
                 { "<leader>w", group = "[W]orkspace", icon = "󰲃 " },
@@ -63,9 +61,6 @@ return {
                 -- [H]unk
                 { "<leader>h", group = "[H]unk", icon = " " },
 
-                -- [?]Help
-                { "<leader>?", group = "[?]elp", icon = " " },
-
                 -- v2
                 { "<leader>c", group = "Code", icon = " " },
                 { "<leader>cl", group = "[L]og", icon = " " },
@@ -75,7 +70,6 @@ return {
                 { "<leader>i", group = "[I]ntelligence", icon = "󰧑 " },
                 { "<leader>s", group = "[S]earch", icon = " " },
                 { "<leader>n", group = "[N]otes", icon = " " },
-                { "<leader>u", group = "[U]I", icon = "󰙵 " },
             },
         },
     },

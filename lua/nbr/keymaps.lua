@@ -13,9 +13,9 @@ set("n", "Q", "<nop>")
 set("v", "J", ":m '>+1<CR>gv=gv")
 set("v", "K", ":m '<-2<CR>gv=gv")
 
-set({ "n", "x" }, "<leader><leader>", function()
-    vim.api.nvim_feedkeys(":", "n", true)
-end, { desc = "Enter Command Mode" })
+-- set({ "n", "x" }, "<leader><leader>", function()
+--     vim.api.nvim_feedkeys(":", "n", true)
+-- end, { desc = "Enter Command Mode" })
 
 set("n", "<Esc>", function()
     vim.cmd.nohlsearch()
@@ -111,16 +111,9 @@ set("n", "<leader>g.", function()
     end
 end, { desc = "[.] Root" })
 
-set("n", "<leader>ur", function()
-    -- Reload the config file and colorscheme
-    package.loaded["nbr.config"] = nil
-    vim.cmd.colorscheme(require("nbr.config").colorscheme)
-    vim.cmd("norm zz:e!<CR>zz")
-end, { desc = "Redraw" })
+set("n", "<leader>sI", vim.show_pos, { desc = "[I]nspect Position" })
 
-set("n", "<leader>ui", vim.show_pos, { desc = "Inspect Position" })
-
-set("n", "<leader>uc", function()
+set("n", "<leader>aoc", function()
     local defaultLevel = 0
     local currentLevel = vim.o.conceallevel
     local nextLevel = currentLevel == 0 and 3 or defaultLevel
@@ -128,7 +121,7 @@ set("n", "<leader>uc", function()
     vim.notify("Conceal level set to " .. nextLevel, vim.log.levels.INFO, { title = "Conceal" })
 end, { desc = "Toggle [C]onceal (0, 3)" })
 
-set("n", "<leader>uC", function()
+set("n", "<leader>aoC", function()
     local defaultLevel = 0
     vim.ui.select({ 0, 1, 2, 3 }, {
         promt = "Select Conceal Level",

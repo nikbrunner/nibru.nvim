@@ -34,11 +34,11 @@ return {
     keys = {
         {
             -- NOTE: This is not really a workspace switcher
-            "<leader>p",
+            "<leader>ad",
             function()
                 require("file-surfer").find()
             end,
-            desc = "Projects",
+            desc = "[D]ocument in a Workspace",
         },
     },
 }

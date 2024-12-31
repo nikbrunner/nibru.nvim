@@ -14,13 +14,6 @@ M.spec = {
             desc = "Todos",
         },
         {
-            "<leader>sX",
-            function()
-                vim.notify("list all todos for the current branch or via input")
-            end,
-            desc = "Special Todo",
-        },
-        {
             "<leader>ct",
             function()
                 local branch_name = lib.git.get_current_git_branch()

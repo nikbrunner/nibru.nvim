@@ -119,20 +119,19 @@ M.keys = function()
     return {
         -- stylua: ignore start
         { "z=",               function() fzfLua.spell_suggest({ winopts = { height = 0.35, width = 0.65 } }) end, desc = "Spelling Suggestions" },
-        { "<leader>;",        function() fzfLua.commands({ winopts = M.winopts.md.vertical }) end, desc = "Command Palette" },
-        { "<leader><tab>",    function() fzfLua.tabs() end, desc = "Tab Fuzzy Find" },
+        { "<leader>aa",       function() fzfLua.commands({ winopts = M.winopts.md.vertical }) end, desc = "[A]ctions & Commands" },
+        { "<leader><tab>",    function() fzfLua.tabs() end, desc = WhichKeyIgnoreLabel },
         -- { "<leader>s.",       function() fzfLua.resume() end, desc = "Resume" },
-
-        -- [?]Help
-        { "<leader>?t",       function() fzfLua.help_tags() end, desc = "[T]ags" },
-        { "<leader>?m",       function() fzfLua.man_pages() end, desc = "[M]an Pages" },
 
         -- [A]pp
         { "<leader>ak",       function() fzfLua.keymaps() end, desc = "[K]eybindings" },
-        { "<leader>aj",        function() fzfLua.jumps({ winopts = M.winopts.md.vertical }) end, desc = "[J]umps" },
+        { "<leader>aj",       function() fzfLua.jumps({ winopts = M.winopts.md.vertical }) end, desc = "[J]umps" },
         { "<leader>at",       function() fzfLua.colorschemes() end, desc = "[T]hemes" },
         { "<leader>ar",       function() fzfLua.oldfiles({ cwd_only = false, prompt = "Recent Files (Anywhere): ", winopts = M.winopts.sm.no_preview }) end, desc = "[R]ecent Documents (across Workspaces)" },
-        { "<leader>aT",       function() fzfLua.awesome_colorschemes() end, desc = "[T]hemes (Awesome)" },
+        { "<leader>aht",       function() fzfLua.help_tags() end, desc = "[T]ags" },
+        { "<leader>ahm",       function() fzfLua.man_pages() end, desc = "[M]an Pages" },
+        { "<leader>ahh",       function() fzfLua.highlights() end, desc = "[H]ighlights" },
+        { "<leader>aT",        function() fzfLua.awesome_colorschemes() end, desc = "[T]hemes (Awesome)" },
 
         -- [W]orkspace
         { "<leader>wd",       function() fzfLua.files({ winopts = M.winopts.md.flex }) end, desc = "[D]ocument in Workspace" },
@@ -152,7 +151,6 @@ M.keys = function()
         { "<leader>dc",       function() fzfLua.changes() end, desc = "[C]hanges" },
 
         -- v2
-        { "<leader>sH",       function() fzfLua.highlights() end, desc = "Highlights" },
         -- { "<leader>sm",       function() fzfLua.marks({ winopts = M.winopts.lg.vertical }) end, desc = "Marks" },
         -- { "<leader>s'",       function() fzfLua.registers({ winopts = M.winopts.lg.vertical }) end, mode = { "n", "v" }, desc = "Registers" },
         -- stylua: ignore end

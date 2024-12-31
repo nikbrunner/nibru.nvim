@@ -20,7 +20,7 @@ return {
             function()
                 require("yazi").yazi(nil, vim.fn.getcwd())
             end,
-            desc = "[E]xplorer (CWD)",
+            desc = "[E]xplorer (Root)",
         },
     },
 

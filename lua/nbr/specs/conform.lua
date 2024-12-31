@@ -50,7 +50,7 @@ M.spec = {
             desc = "Format",
         },
         {
-            "<leader>asf",
+            "<leader>aof",
             function()
                 if vim.g.vin_autoformat_enabled then
                     vim.g.vin_autoformat_enabled = false
