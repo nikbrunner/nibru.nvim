@@ -2,7 +2,6 @@
 return {
     "Chaitanyabsprip/fastaction.nvim",
     event = "BufRead",
-    enabled = false, -- [Get "no code actions available" even if code actions are available with `vim.lsp.buf.code_action` · Issue #22 · Chaitanyabsprip/fastaction.nvim](https://github.com/Chaitanyabsprip/fastaction.nvim/issues/22)
     ---@module "fastaction"
     ---@type FastActionConfig
     opts = {
@@ -37,14 +36,14 @@ return {
     },
     keys = {
         {
-            "g.",
+            "sa",
             function()
                 require("fastaction").code_action()
             end,
             desc = "Code Action",
         },
         {
-            "g.",
+            "sa",
             mode = "v",
             function()
                 require("fastaction").range_code_action()

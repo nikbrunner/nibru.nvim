@@ -177,10 +177,6 @@ M.lsp_attach = function()
             winopts = M.winopts.lg.vertical,
         })
     end, { desc = "Go to References" })
-
-    vim.keymap.set("n", "g.", function()
-        require("fzf-lua").lsp_code_actions()
-    end, { desc = "Code Action" })
 end
 
 M.spec = {
@@ -285,19 +281,6 @@ M.spec = {
                     vim.fn.setreg("+", hl_group)
                     vim.notify("Copied " .. hl_group .. " to the clipboard!", vim.log.levels.INFO)
                 end,
-            },
-        },
-        lsp = {
-            code_actions = {
-                previewer = false,
-                winopts = {
-                    relative = "cursor",
-                    row = 0.85,
-                    col = 0.5,
-                    height = 0.15,
-                    -- width = 0.35,
-                    preview = { hidden = "hidden" },
-                },
             },
         },
     },
