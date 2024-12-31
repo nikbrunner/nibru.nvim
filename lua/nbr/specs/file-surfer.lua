@@ -1,7 +1,5 @@
-local M = {}
-
 ---@type LazyPluginSpec
-M.spec = {
+return {
     "nikbrunner/file-surfer.nvim",
     dir = require("nbr.config").pathes.repos .. "/nikbrunner/file-surfer.nvim",
     pin = true,
@@ -35,6 +33,7 @@ M.spec = {
     },
     keys = {
         {
+            -- NOTE: This is not really a workspace switcher
             "<leader>p",
             function()
                 require("file-surfer").find()
@@ -43,5 +42,3 @@ M.spec = {
         },
     },
 }
-
-return M.spec
