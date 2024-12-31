@@ -84,7 +84,7 @@ M.specs = {
 
                             {
                                 hl = "Comment",
-                                strings = (m.is_truncated(250) and {} or {
+                                strings = (m.is_truncated(165) and {} or {
                                     lazy_plug_count(),
                                     lazy_updates(),
                                     lazy_startup(),
