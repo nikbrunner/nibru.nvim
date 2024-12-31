@@ -43,36 +43,20 @@ M.spec = {
     },
     keys = {
         {
-            "<leader>f",
-            mode = { "n", "x" },
-            function()
-                require("grug-far").open()
-            end,
-            desc = "Find",
-        },
-        {
-            "<leader>cr",
+            "<leader>df",
             mode = { "n", "x" },
             function()
                 require("grug-far").open({ prefills = { paths = vim.fn.expand("%") } })
             end,
-            desc = "Replace",
+            desc = "[F]ind and replace",
         },
         {
-            "<leader>st",
-            mode = { "n", "x" },
-            function()
-                require("grug-far").open({ prefills = { paths = vim.fn.expand("%") } })
-            end,
-            desc = "Text (File)",
-        },
-        {
-            "<leader>sT",
+            "<leader>wf",
             mode = { "n", "x" },
             function()
                 require("grug-far").open()
             end,
-            desc = "Text",
+            desc = "[F]ind and replace",
         },
     },
 }
