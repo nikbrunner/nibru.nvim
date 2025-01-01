@@ -269,7 +269,7 @@ M.spec = {
         },
 
         grep = {
-            rg_opts = "--column --line-number --no-heading --color=always --smart-case --max-columns=512",
+            rg_opts = "--column --line-number --no-heading --color=always --smart-case --max-columns=512 --glob=!gp/",
         },
 
         highlights = {
