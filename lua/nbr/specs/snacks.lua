@@ -13,13 +13,22 @@ M.spec = {
         notifier = { enabled = true },
         toggle = { enabled = true },
         gitbrowse = { enabled = true },
-        zen = { enabled = true },
+        zen = {
+            toggles = {
+                dim = false,
+                git_signs = false,
+                mini_diff_signs = false,
+                -- diagnostics = false,
+                -- inlay_hints = false,
+            },
+        },
         scroll = { enabled = false },
 
         ---@type snacks.words.Config
         words = { debounce = 100 },
 
         ---@type snacks.dashboard.Config
+        ---@diagnostic disable-next-line: missing-fields
         dashboard = {
             preset = {
                 -- Defaults to a picker that supports `fzf-lua`, `telescope.nvim` and `mini.pick`
@@ -146,10 +155,10 @@ M.spec = {
             { "<leader>wh",          function() Snacks.lazygit() end, desc = "[H]istory" },
             { "<leader>gb",          function() Snacks.git.blame_line() end, desc = "[B]lame" },
             { "<leader>gR",          function() Snacks.gitbrowse() end, desc = "[R]emote" },
-            { "<leader>gf",          function() Snacks.lazygit.log_file() end, desc = "[F]ile" },
-            { "<leader>gl",          function() Snacks.lazygit.log() end, desc = "[L]og" },
-            { "<leader>af",         function() Snacks.zen.zen() end, desc = "[F]ocus Mode" },
-            { "<leader>az",         function() Snacks.zen.zoom() end, desc = "[Z]oom Mode" },
+            { "<leader>dl",          function() Snacks.lazygit.log_file() end, desc = "[L]og" },
+            { "<leader>wl",          function() Snacks.lazygit.log() end, desc = "[L]og" },
+            { "<leader>af",          function() Snacks.zen.zen() end, desc = "[F]ocus Mode" },
+            { "<leader>az",          function() Snacks.zen.zoom() end, desc = "[Z]oom Mode" },
             { "<leader>an",          function() Snacks.notifier.show_history() end, desc = "[N]otifications" },
             {
                 "<leader>aN",
