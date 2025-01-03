@@ -43,6 +43,8 @@ return {
             {
                 mode = { "n", "v" },
 
+                { "<leader>,", icon = " " },
+
                 -- [A]pp
                 { "<leader>a", group = "[A]pp", icon = " " },
                 { "<leader>ao", group = "[O]ptions", icon = " " },
@@ -61,6 +63,9 @@ return {
                 -- [H]unk
                 { "<leader>h", group = "[H]unk", icon = " " },
 
+                -- [S]ymbol
+                { "<leader>s", group = "[S]ymbol", icon = " " },
+
                 -- v2
                 { "<leader>c", group = "Code", icon = " " },
                 { "<leader>cl", group = "[L]og", icon = " " },
@@ -68,7 +73,6 @@ return {
                 { "<leader>g", group = "[G]it", icon = " " },
                 { "<leader>r", group = "[R]EST", icon = "󰿘 " },
                 { "<leader>i", group = "[I]ntelligence", icon = "󰧑 " },
-                { "<leader>s", group = "[S]earch", icon = " " },
                 { "<leader>n", group = "[N]otes", icon = " " },
             },
         },

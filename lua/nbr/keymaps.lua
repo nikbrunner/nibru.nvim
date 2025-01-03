@@ -13,9 +13,9 @@ set("n", "Q", "<nop>")
 set("v", "J", ":m '>+1<CR>gv=gv")
 set("v", "K", ":m '<-2<CR>gv=gv")
 
--- set({ "n", "x" }, "<leader><leader>", function()
---     vim.api.nvim_feedkeys(":", "n", true)
--- end, { desc = "Enter Command Mode" })
+set({ "n", "x" }, "<leader><leader>", function()
+    vim.api.nvim_feedkeys(":", "n", true)
+end, { desc = "Command Mode" })
 
 set("n", "<Esc>", function()
     vim.cmd.nohlsearch()
