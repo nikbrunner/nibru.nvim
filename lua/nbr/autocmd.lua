@@ -1,76 +1,21 @@
+local config = require("nbr.config")
+
 local auto = vim.api.nvim_create_autocmd
 
-local M = {}
-
-function M.augroup(name)
-    return vim.api.nvim_create_augroup("vin_" .. name, { clear = true })
+local function auto_group(name)
+    return vim.api.nvim_create_augroup("nbr.nvim_" .. name, { clear = true })
 end
 
-function M.open_git_status()
-    require("fzf-lua").git_status({
-        winopts = {
-            fullscreen = true,
-        },
-    })
-end
-
-function M.open_previous_files()
-    local filetype = vim.bo.filetype
-    local excluded_filetypes = { "gitcommit" }
-
-    if not vim.list_contains(excluded_filetypes, filetype) then
-        require("fzf-lua").oldfiles({
-            cwd_only = true,
-            winopts = {
-                row = 0.85,
-                col = 0.5,
-                height = 0.35,
-                width = 0.65,
-                preview = { hidden = "hidden" },
-            },
-        })
-    end
-end
-
-auto("UIEnter", {
-    group = M.augroup("ui_enter"),
+auto("VimEnter", {
+    group = auto_group("vim_enter"),
     callback = function()
-        local config = require("nbr.config")
-
-        local is_git_dir = vim.fn.finddir(".git", vim.fn.expand("%:p:h") .. ";") ~= ""
-        local has_uncommited_changes = vim.fn.system("git status --porcelain") ~= ""
-
         require("nbr.lib.ui").handle_colors(config, config.colorscheme, config.background)
-
-        -- TODO:  check if the lazy window is open. If yes - abort.
-        if config.open_neotree_on_startup and is_git_dir and has_uncommited_changes then
-            if not pcall(require, "neo-tree") then
-                print("NeoTree is not installed")
-                return
-            else
-                require("neo-tree.command").execute({
-                    action = "focus",
-                    source = "git_status",
-                    position = "float",
-                })
-            end
-        end
-
-        if config.open_previous_files_on_startup then
-            if not pcall(require, "fzf-lua") then
-                print("Fzf-lua is not installed")
-                return
-            else
-                M.open_previous_files()
-            end
-        end
     end,
 })
 
 auto("ColorScheme", {
-    group = M.augroup("colorscheme_sync"),
+    group = auto_group("colorscheme_sync"),
     callback = function(args)
-        local config = require("nbr.config")
         local colorscheme = args.match
         ---@diagnostic disable-next-line: undefined-field
         local background = vim.opt.background:get()
@@ -80,7 +25,7 @@ auto("ColorScheme", {
 
 -- Close these filetypes with <Esc> & q in normal mode
 auto("FileType", {
-    group = M.augroup("quit_mapping"),
+    group = auto_group("quit_mapping"),
     pattern = {
         "nofile",
         "qf",
@@ -110,7 +55,7 @@ auto("FileType", {
 
 -- go to last loc when opening a buffer
 auto("BufReadPost", {
-    group = M.augroup("last_loc"),
+    group = auto_group("last_loc"),
     callback = function(event)
         local exclude = { "gitcommit" }
         local buf = event.buf
@@ -128,7 +73,7 @@ auto("BufReadPost", {
 
 -- Check if we need to reload the file when it changed
 auto({ "BufEnter", "FocusGained", "TermClose", "TermLeave" }, {
-    group = M.augroup("checktime"),
+    group = auto_group("checktime"),
     callback = function()
         vim.cmd("checktime")
         require("gitsigns").refresh()
@@ -137,7 +82,7 @@ auto({ "BufEnter", "FocusGained", "TermClose", "TermLeave" }, {
 
 -- Highlight on yank
 auto("TextYankPost", {
-    group = M.augroup("highlight_yank"),
+    group = auto_group("highlight_yank"),
     callback = function()
         vim.highlight.on_yank()
     end,
@@ -145,7 +90,7 @@ auto("TextYankPost", {
 
 -- resize splits if window got resized
 auto({ "VimResized" }, {
-    group = M.augroup("resize_splits"),
+    group = auto_group("resize_splits"),
     callback = function()
         local current_tab = vim.fn.tabpagenr()
         vim.cmd("tabdo wincmd =")
@@ -155,7 +100,7 @@ auto({ "VimResized" }, {
 
 -- Set a color column, hard wrap, and other sensible options for gitcommit buffers
 auto({ "BufEnter" }, {
-    group = M.augroup("gitcommit"),
+    group = auto_group("gitcommit"),
     callback = function()
         local max_line_width = 72 -- Git recommends 72 characters for commit messages
         if vim.bo.filetype == "gitcommit" then
