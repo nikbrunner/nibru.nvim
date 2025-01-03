@@ -59,17 +59,17 @@ nmap zR :unfoldall<CR>
 nmap ,, :
 
 exmap findFiles obcommand obsidian-better-command-palette:open-better-commmand-palette-file-search
-nmap <CR> :findFiles<CR>
+nmap ,wd :findFiles<CR>
 
 exmap fileExplorer obcommand quick-explorer:browse-current
-nmap ,e :fileExplorer<CR>
+nmap ,we :fileExplorer<CR>
 
 " Actions
 exmap renameHeading obcommand editor:rename-heading
-nmap ,cn :renameHeading<CR>
+nmap ,sn :renameHeading<CR>
 
 exmap moveFile obcommand file-explorer:move-file
-nmap ,cm :moveFile<CR>
+nmap ,dm :moveFile<CR>
 
 " Go
 exmap followlink obcommand editor:follow-link
