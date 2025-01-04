@@ -173,26 +173,36 @@ vim.api.nvim_create_autocmd("LspAttach", {
         vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
 
         -- See `:help vim.lsp.buf for documentation on any of the below functions
-        local opts = { buffer = ev.buf }
+        -- local opts = { buffer = ev.buf }
+        local o = function(opts)
+            opts = opts or {}
+            return vim.tbl_extend("force", opts, { buffer = ev.buf })
+        end
 
-        set("n", "K", vim.lsp.buf.hover, opts)
-        set("i", "<C-k>", vim.lsp.buf.signature_help, opts)
-
-        set("n", "gD", function()
+        local split_defnition = function()
             vim.cmd.vsplit()
             vim.lsp.buf.definition()
             vim.cmd("norm zz")
-        end, vim.tbl_extend("keep", opts, { desc = "Go to Definition in Split" }))
+        end
 
-        set("n", "gi", vim.lsp.buf.implementation, opts)
-        set("n", "gy", vim.lsp.buf.type_definition, opts)
-
-        -- set("n", "g.", vim.lsp.buf.code_action, vim.tbl_extend("force", opts, { desc = "Code Action" }))
-
-        set("n", "cn", vim.lsp.buf.rename, vim.tbl_extend("force", opts, { desc = "[R]ename" }))
-        set("n", "<leader>sn", vim.lsp.buf.rename, vim.tbl_extend("force", opts, { desc = "[R]ename" }))
-
+        -- gd is defined in fzf.lua
+        set("n", "K", vim.lsp.buf.hover, o())
+        set("i", "<C-k>", vim.lsp.buf.signature_help, o())
+        set("n", "gD", split_defnition, o({ desc = "Go to Definition in Split" }))
+        set("n", "gi", vim.lsp.buf.implementation, o({ desc = "[I]mplementation" }))
+        set("n", "gy", vim.lsp.buf.type_definition, o({ desc = "[T]ype Definition" }))
+        set("n", "g.", vim.lsp.buf.code_action, o({ desc = "Code Action" }))
+        set("n", "cn", vim.lsp.buf.rename, o({ desc = "[R]ename" }))
         set("n", "dh", vim.diagnostic.open_float, { desc = "Diagnostics Hover" })
-        set("n", "<leader>dh", vim.diagnostic.open_float, { desc = "Hover" })
+
+        -- [S]ymbol
+        set("n", "<leader>sd", vim.lsp.buf.definition, o({ desc = "[D]efinition" }))
+        set("n", "<leader>sD", split_defnition, o({ desc = "[D]efinition in Split" }))
+        -- set("n", "<leader>sr", vim.lsp.buf.references, o({ desc = "[R]eferences" }))
+        set("n", "<leader>si", vim.lsp.buf.implementation, o({ desc = "[I]mplementation" }))
+        set("n", "<leader>sT", vim.lsp.buf.type_definition, o({ desc = "[T]ype Definition" }))
+        set("n", "<leader>sn", vim.lsp.buf.rename, o({ desc = "[R]ename" }))
+        set("n", "<leader>si", vim.diagnostic.open_float, { desc = "[I]nfo" })
+        set("n", "<leader>sa", vim.lsp.buf.code_action, o({ desc = "[A]ction" }))
     end,
 })
