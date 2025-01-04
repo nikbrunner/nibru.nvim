@@ -80,7 +80,6 @@ return {
                 { "<leader>sl", group = "[L]og", icon = " " },
 
                 -- v2
-                { "<leader>g", group = "[G]it", icon = " " },
                 { "<leader>r", group = "[R]EST", icon = "󰿘 " },
                 { "<leader>i", group = "[I]ntelligence", icon = "󰧑 " },
                 { "<leader>n", group = "[N]otes", icon = " " },

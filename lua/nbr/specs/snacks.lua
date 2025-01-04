@@ -1,7 +1,5 @@
-local M = {}
-
 ---@type LazyPluginSpec
-M.spec = {
+return {
     "folke/snacks.nvim",
     priority = 1000,
     lazy = false,
@@ -182,5 +180,3 @@ M.spec = {
         -- stylua: ignore end
     end,
 }
-
-return M.spec
