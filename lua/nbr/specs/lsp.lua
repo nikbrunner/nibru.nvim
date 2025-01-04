@@ -35,10 +35,7 @@ M.specs = {
             "saghen/blink.cmp",
         },
         opts = function()
-            -- local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
             local function setup_server(server_name, extra_opts)
-                -- https://github.com/Saghen/blink.cmp?tab=readme-ov-file#installation
                 local capabilities = require("blink.cmp").get_lsp_capabilities()
 
                 local opts = vim.tbl_extend("force", {
