@@ -2,11 +2,13 @@
 return {
     "Chaitanyabsprip/fastaction.nvim",
     event = "BufRead",
+    enabled = false,
     ---@module "fastaction"
     ---@type FastActionConfig
     opts = {
         dismiss_keys = { "j", "k", "<c-c>", "q" },
         keys = "qwertyuiopasdfghlzxcvbnm",
+        enabled = false,
         popup = {
             relative = "cursor",
             border = "solid",
@@ -36,19 +38,19 @@ return {
     },
     keys = {
         {
-            "sa",
+            "<leader>sa",
             function()
                 require("fastaction").code_action()
             end,
-            desc = "Code Action",
+            desc = "[A]ction",
         },
         {
-            "sa",
+            "<leader>sa",
             mode = "v",
             function()
                 require("fastaction").range_code_action()
             end,
-            desc = "Code Action",
+            desc = "[A]ction",
         },
     },
 }

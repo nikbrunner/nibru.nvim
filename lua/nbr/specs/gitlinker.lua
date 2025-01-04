@@ -1,15 +1,15 @@
-local M = {}
-
 ---@type LazyPluginSpec
-M.spec = {
-    "ruifm/gitlinker.nvim",
+return {
+    "linrongbin16/gitlinker.nvim",
+    cmd = "GitLink",
     event = "BufEnter",
-    requires = "nvim-lua/plenary.nvim",
-    opts = {
-        -- FIX: This doesn't disable the mapping.
-        -- See here: https://github.com/ruifm/gitlinker.nvim/blob/master/lua/gitlinker/mappings.lua
-        mappings = nil,
+    keys = {
+        {
+            mode = { "n", "v" },
+            "<leader>dY",
+            "<CMD>GitLink<CR>",
+            desc = "[Y]ank GitHub Link",
+        },
     },
+    opts = {},
 }
-
-return M.spec

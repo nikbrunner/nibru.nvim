@@ -10,14 +10,14 @@ M.spec = {
         auto_close = true,
         follow = false, -- Follow the current item
         ---@type trouble.Window.opts
-        win = {
-            type = "float",
-            position = { 0.85, 0.5 },
-            size = { width = 0.95, height = 0.35 },
-            padding = { top = 1, left = 4 },
-            border = "solid",
-            title = "",
-        },
+        -- win = {
+        --     type = "float",
+        --     position = { 0.85, 0.5 },
+        --     size = { width = 0.95, height = 0.35 },
+        --     padding = { top = 1, left = 4 },
+        --     border = "solid",
+        --     title = "",
+        -- },
         ---@type table<string, trouble.Mode>
         modes = {
             diagnostics = {},
@@ -53,18 +53,12 @@ M.spec = {
     },
     keys = {
         { "gr", "<cmd>Trouble lsp_references<cr>", desc = "Symbol References" },
-        { "<leader>dp", "<cmd>Trouble diagnostics toggle  filter.buf=0<cr>", desc = "[P]roblems in Document" },
-        { "<leader>wp", "<cmd>Trouble diagnostics toggle<cr>", desc = "[P]roblems in Workspace" },
-        -- {
-        --     "gt",
-        --     function()
-        --         require("trouble").focus()
-        --     end,
-        --     desc = "Symbol References",
-        -- },
+        { "<leader>sr", "<cmd>Trouble lsp_references<cr>", desc = "[R]eferences" },
+        { "<leader>dp", "<cmd>Trouble diagnostics toggle  filter.buf=0<cr>", desc = "[P]roblems" },
+        { "<leader>wp", "<cmd>Trouble diagnostics toggle<cr>", desc = "[P]roblems" },
         -- { "<leader>di", "<cmd>Trouble lsp toggle<cr>", desc = "Symbol Information" },
-        -- { "<leader>dci", "<cmd>Trouble lsp_incoming_calls<cr>", desc = "Calls Incoming" },
-        -- { "<leader>dco", "<cmd>Trouble lsp_outgoing_calls<cr>", desc = "Calls Outgoing" },
+        { "<leader>sci", "<cmd>Trouble lsp_incoming_calls<cr>", desc = "[I]ncoming" },
+        { "<leader>sco", "<cmd>Trouble lsp_outgoing_calls<cr>", desc = "[O]utgoing" },
         -- { "<leader>dt", "<cmd>Trouble symbols toggle<cr>", desc = "Symbols" },
         {
             "[q",

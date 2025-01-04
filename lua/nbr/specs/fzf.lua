@@ -119,11 +119,10 @@ M.keys = function()
     return {
         -- stylua: ignore start
         { "z=",               function() fzfLua.spell_suggest({ winopts = { height = 0.35, width = 0.65 } }) end, desc = "Spelling Suggestions" },
-        { "<leader>aa",       function() fzfLua.commands({ winopts = M.winopts.md.vertical }) end, desc = "[A]ctions & Commands" },
         { "<leader><tab>",    function() fzfLua.tabs() end, desc = WhichKeyIgnoreLabel },
-        -- { "<leader>s.",       function() fzfLua.resume() end, desc = "Resume" },
 
         -- [A]pp
+        { "<leader>aa",       function() fzfLua.commands({ winopts = M.winopts.md.vertical }) end, desc = "[A]ctions & Commands" },
         { "<leader>ak",       function() fzfLua.keymaps() end, desc = "[K]eybindings" },
         { "<leader>aj",       function() fzfLua.jumps({ winopts = M.winopts.md.vertical }) end, desc = "[J]umps" },
         { "<leader>at",       function() fzfLua.colorschemes() end, desc = "[T]hemes" },
@@ -134,12 +133,12 @@ M.keys = function()
         { "<leader>aT",        function() fzfLua.awesome_colorschemes() end, desc = "[T]hemes (Awesome)" },
 
         -- [W]orkspace
-        { "<leader>wd",       function() fzfLua.files({ winopts = M.winopts.md.flex }) end, desc = "[D]ocument in Workspace" },
-        { "<leader>ww",       function() fzfLua.grep_cword() end, mode = { "n", "v" }, desc = "[W]ord in Workspace" },
+        { "<leader>wd",       function() fzfLua.files({ winopts = M.winopts.md.flex }) end, desc = "[D]ocument" },
+        { "<leader>ww",       function() fzfLua.grep_cword() end, mode = { "n", "v" }, desc = "[W]ord" },
         { "<leader>wr",       function() fzfLua.oldfiles({ cwd_only = true, prompt = "Recent Files (CWD): ", winopts = M.winopts.sm.no_preview }) end, desc = "[R]ecent Documents" },
-        { "<leader>wt",       function() fzfLua.live_grep({ winopts = M.winopts.md.vertical }) end, desc = "[T]ext in Workspace" },
+        { "<leader>wt",       function() fzfLua.live_grep({ winopts = M.winopts.md.vertical }) end, desc = "[T]ext" },
         { "<leader>wm",       function() fzfLua.git_status({ winopts = M.winopts.lg.vertical }) end, desc = "[M]odified Documents" },
-        { "<leader>ws",       function() fzfLua.lsp_live_workspace_symbols({ winopts = M.winopts.lg.vertical }) end, desc = "[S]ymbol in Workspace" },
+        { "<leader>ws",       function() fzfLua.lsp_live_workspace_symbols({ winopts = M.winopts.lg.vertical }) end, desc = "[S]ymbol" },
         { "<leader>wvb",      function() fzfLua.git_branches() end, desc = "[B]ranches" },
         { "<leader>wvc",      function() fzfLua.git_commits() end, desc = "[C]ommits" },
         { "<leader>wvt",      function() fzfLua.git_tags() end, desc = "[T]ags" },
@@ -149,32 +148,56 @@ M.keys = function()
         { "<leader>dt",       function() fzfLua.lgrep_curbuf({ winopts = M.winopts.md.flex }) end, desc = "[T]ext" },
         { "<leader>ds",       function() fzfLua.lsp_document_symbols({ winopts = M.winopts.lg.vertical }) end, desc = "[S]ymbols" },
         { "<leader>dc",       function() fzfLua.changes() end, desc = "[C]hanges" },
-
-        -- v2
-        -- { "<leader>sm",       function() fzfLua.marks({ winopts = M.winopts.lg.vertical }) end, desc = "Marks" },
-        -- { "<leader>s'",       function() fzfLua.registers({ winopts = M.winopts.lg.vertical }) end, mode = { "n", "v" }, desc = "Registers" },
         -- stylua: ignore end
+
+        -- [S]ymbols
+        {
+            "<leader>sa",
+            function()
+                fzfLua.lsp_code_actions({
+                    winopts = {
+                        relative = "cursor",
+                        row = 1,
+                        col = 0,
+                        height = 10,
+                        width = 65,
+                    },
+                })
+            end,
+            desc = "[A]ctions",
+        },
+        {
+            "<leader>sd",
+            function()
+                fzfLua.lsp_definitions({
+                    jump_to_single_result = true,
+                })
+            end,
+            desc = "[D]efinition",
+        },
+        {
+            "<leader>st",
+            function()
+                fzfLua.lsp_typedefs({
+                    jump_to_single_result = true,
+                })
+            end,
+            desc = "[T]ype Definition",
+        },
+        {
+            "<leader>sR",
+            function()
+                require("fzf-lua").lsp_references({
+                    jump_to_single_result = true,
+                    jump_type = "vsplit",
+                    multiline = 2,
+
+                    winopts = M.winopts.lg.vertical,
+                })
+            end,
+            desc = "Browse [R]eferences",
+        },
     }
-end
-
-M.lsp_attach = function()
-    vim.keymap.set("n", "gd", function()
-        require("fzf-lua").lsp_definitions({
-            jump_to_single_result = true,
-            jump_type = "vsplit",
-            winopts = M.winopts.lg.vertical,
-        })
-    end, { desc = "Go to Definition" })
-
-    vim.keymap.set("n", "gR", function()
-        require("fzf-lua").lsp_references({
-            jump_to_single_result = true,
-            jump_type = "vsplit",
-            multiline = 2,
-
-            winopts = M.winopts.lg.vertical,
-        })
-    end, { desc = "Go to References" })
 end
 
 M.spec = {
@@ -272,6 +295,75 @@ M.spec = {
             rg_opts = "--column --line-number --no-heading --color=always --smart-case --max-columns=512 --glob=!gp/",
         },
 
+        lsp = {
+            prompt_postfix = "❯ ", -- will be appended to the LSP label
+            -- to override use 'prompt' instead
+            cwd_only = false, -- LSP/diagnostics for cwd only?
+            async_or_timeout = 5000, -- timeout(ms) or 'true' for async calls
+            file_icons = true,
+            git_icons = false,
+            -- The equivalent of using `includeDeclaration` in lsp buf calls, e.g:
+            -- :lua vim.lsp.buf.references({includeDeclaration = false})
+            includeDeclaration = true, -- include current declaration in LSP context
+            -- settings for 'lsp_{document|workspace|lsp_live_workspace}_symbols'
+            symbols = {
+                -- lsp_query      = "foo"       -- query passed to the LSP directly
+                -- query          = "bar"       -- query passed to fzf prompt for fuzzy matching
+                async_or_timeout = true, -- symbols are async by default
+                symbol_style = 1, -- style for document/workspace symbols
+                -- false: disable,    1: icon+kind
+                --     2: icon only,  3: kind only
+                -- NOTE: icons are extracted from
+                -- vim.lsp.protocol.CompletionItemKind
+                -- icons for symbol kind
+                -- see https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#symbolKind
+                -- see https://github.com/neovim/neovim/blob/829d92eca3d72a701adc6e6aa17ccd9fe2082479/runtime/lua/vim/lsp/protocol.lua#L117
+                symbol_icons = {
+                    File = "󰈙",
+                    Module = "",
+                    Namespace = "󰦮",
+                    Package = "",
+                    Class = "󰆧",
+                    Method = "󰊕",
+                    Property = "",
+                    Field = "",
+                    Constructor = "",
+                    Enum = "",
+                    Interface = "",
+                    Function = "󰊕",
+                    Variable = "󰀫",
+                    Constant = "󰏿",
+                    String = "",
+                    Number = "󰎠",
+                    Boolean = "󰨙",
+                    Array = "󱡠",
+                    Object = "",
+                    Key = "󰌋",
+                    Null = "󰟢",
+                    EnumMember = "",
+                    Struct = "󰆼",
+                    Event = "",
+                    Operator = "󰆕",
+                    TypeParameter = "󰗴",
+                },
+                -- colorize using Treesitter '@' highlight groups ("@function", etc).
+                -- or 'false' to disable highlighting
+                symbol_hl = function(s)
+                    return "@" .. s:lower()
+                end,
+                -- additional symbol formatting, works with or without style
+                symbol_fmt = function(s, opts)
+                    return "[" .. s .. "]"
+                end,
+                -- prefix child symbols. set to any string or `false` to disable
+                child_prefix = true,
+                fzf_opts = { ["--tiebreak"] = "begin" },
+            },
+            code_actions = {
+                previewer = false,
+            },
+        },
+
         highlights = {
             actions = {
                 ["default"] = function(entry)
@@ -288,11 +380,6 @@ M.spec = {
         local config = require("fzf-lua.config")
         local actions = require("trouble.sources.fzf").actions
         config.defaults.actions.files["alt-t"] = actions.open
-
-        vim.api.nvim_create_autocmd("LspAttach", {
-            group = vim.api.nvim_create_augroup("FzfLuaLspAttachGroup", { clear = true }),
-            callback = M.lsp_attach,
-        })
     end,
 }
 

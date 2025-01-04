@@ -38,7 +38,7 @@ return {
             function()
                 require("file-surfer").find()
             end,
-            desc = "[D]ocument in a Workspace",
+            desc = "[D]ocument (across Workspaces)",
         },
     },
 }

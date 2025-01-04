@@ -17,11 +17,12 @@ function M.file_name()
     return vim.fn.expand("%:t")
 end
 
+-- TODO: Reimplement logic to list github link in here
 function M.get_github_url()
-    local current_vim_mode = vim.api.nvim_get_mode().mode
-    local mode_for_plugin = current_vim_mode == "n" and "n" or "v"
-
-    return require("gitlinker").get_buf_range_url(mode_for_plugin, { print_url = false })
+    -- local current_vim_mode = vim.api.nvim_get_mode().mode
+    -- local mode_for_plugin = current_vim_mode == "n" and "n" or "v"
+    --
+    -- return require("gitlinker").get_buf_range_url(mode_for_plugin, { print_url = false })
 end
 
 function M.get_current_relative_path(with_line_number)
@@ -38,7 +39,7 @@ end
 
 M.list_paths = function()
     local fzf = require("fzf-lua")
-    local github_url = M.get_github_url()
+    -- local github_url = M.get_github_url()
 
     function M.file_paths()
         local paths = {
@@ -47,7 +48,7 @@ M.list_paths = function()
             { type = "Relative", name = M.get_current_relative_path(false) },
             { type = "Full Path (Home)", name = M.full_path_from_home() },
             { type = "Full Path (Absolute)", name = M.full_path() },
-            github_url and { type = "GitHub", name = github_url } or nil,
+            -- github_url and { type = "GitHub", name = github_url } or nil,
         }
         return vim.tbl_filter(function(path)
             return path

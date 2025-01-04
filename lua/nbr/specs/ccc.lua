@@ -1,16 +1,13 @@
-local M = {}
-
 ---@type LazyPluginSpec
-M.spec = {
+return {
     "uga-rosa/ccc.nvim",
     event = "VeryLazy",
-    keys = { { "<leader>cpc", "<cmd>CccPick<CR>", desc = "Color Picker" } },
+    keys = { { "<leader>ac", "<cmd>CccPick<CR>", desc = "[C]olor Picker" } },
     opts = function()
         -- Documentation: https://github.com/uga-rosa/ccc.nvim
         -- Defaults: https://github.com/uga-rosa/ccc.nvim/blob/main/lua/ccc/config/default.lua
         local ccc = require("ccc")
 
-        local mapping = ccc.mapping
         local input = ccc.input
         local output = ccc.output
         local picker = ccc.picker
@@ -109,5 +106,3 @@ M.spec = {
         }
     end,
 }
-
-return M.spec

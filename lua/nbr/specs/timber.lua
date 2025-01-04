@@ -1,3 +1,4 @@
+-- TODO: Add file name to log string
 ---@type LazyPluginSpec
 return {
     "Goose97/timber.nvim",
@@ -23,13 +24,13 @@ return {
             },
         },
         keymaps = {
-            insert_log_below = "<leader>cll",
-            insert_batch_log = "<leader>clb",
-            add_log_targets_to_batch = "<leader>cla",
-            insert_log_below_operator = "<leader>c<S-l>j",
-            insert_log_above_operator = "<leader>c<S-l>k",
-            insert_batch_log_operator = "<leader>c<S-l>b",
-            add_log_targets_to_batch_operator = "<leader>c<S-l>a",
+            insert_log_below = "<leader>sll",
+            insert_batch_log = "<leader>slb",
+            add_log_targets_to_batch = nil,
+            insert_log_below_operator = nil,
+            insert_log_above_operator = nil,
+            insert_batch_log_operator = nil,
+            add_log_targets_to_batch_operator = nil,
         },
         default_keymaps_enabled = false,
     },
