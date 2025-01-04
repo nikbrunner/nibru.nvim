@@ -4,7 +4,6 @@ local M = {}
 M.spec = {
     "ariel-frischer/bmessages.nvim",
     lazy = false,
-    enabled = false,
     keys = {
         {
             "<leader>am",
