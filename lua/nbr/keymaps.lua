@@ -72,10 +72,8 @@ set("n", "<C-c>", "ciw")
 set({ "n", "v", "x" }, "<S-Down>", "<cmd>resize -2<cr>", { desc = "Resize Split Down" })
 set({ "n", "v", "x" }, "<S-Up>", "<cmd>resize +2<cr>", { desc = "Resize Split Up" })
 
-set("n", "M", lib.ui.maximize_window, { desc = "Maximize Window" })
-
-set({ "n", "v", "x" }, "<S-Left>", "<cmd>vertical resize -2<cr>", { desc = "Resize Split Left" })
-set({ "n", "v", "x" }, "<S-Right>", "<cmd>vertical resize +2<cr>", { desc = "Resize Split Right" })
+set({ "n", "v", "x" }, "<S-Right>", "<cmd>vertical resize -5<cr>", { desc = "Resize Split Left" })
+set({ "n", "v", "x" }, "<S-Left>", "<cmd>vertical resize +5<cr>", { desc = "Resize Split Right" })
 
 -- Better up/down
 set({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
@@ -191,8 +189,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
         -- set("n", "g.", vim.lsp.buf.code_action, vim.tbl_extend("force", opts, { desc = "Code Action" }))
 
-        set("n", "cn", vim.lsp.buf.rename, vim.tbl_extend("force", opts, { desc = "Rename" }))
-        set("n", "<leader>cn", vim.lsp.buf.rename, vim.tbl_extend("force", opts, { desc = "Rename" }))
+        set("n", "cn", vim.lsp.buf.rename, vim.tbl_extend("force", opts, { desc = "[R]ename" }))
+        set("n", "<leader>sn", vim.lsp.buf.rename, vim.tbl_extend("force", opts, { desc = "[R]ename" }))
 
         set("n", "dh", vim.diagnostic.open_float, { desc = "Diagnostics Hover" })
         set("n", "<leader>dh", vim.diagnostic.open_float, { desc = "Hover" })
