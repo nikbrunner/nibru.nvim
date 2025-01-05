@@ -37,16 +37,25 @@ return {
                 -- When using a function, the `items` argument are the default keymaps.
                 ---@type snacks.dashboard.Item[]
                 keys = {
+                    { icon = " ", key = "n", desc = "New Document", action = ":ene | startinsert" },
+                    {
+                        icon = " ",
+                        key = "<leader>wd",
+                        desc = "Document in Workspace",
+                        action = ":lua Snacks.dashboard.pick('files')",
+                    },
                     {
                         icon = "󰋚 ",
-                        key = "<CR>",
-                        desc = "Recent Filse",
+                        key = "<leader>wr",
+                        desc = "Recent Document in Workspace ",
                         action = ":lua require('fzf-lua').oldfiles({ cwd_only = true, prompt = 'Recent Files (CWD): '})",
                     },
-                    { icon = " ", key = "<S-CR>", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
-                    { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
-                    { icon = " ", key = "f", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
-                    { icon = " ", key = "r", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
+                    {
+                        icon = " ",
+                        key = "<leader>wt",
+                        desc = "Find Text",
+                        action = ":lua Snacks.dashboard.pick('live_grep')",
+                    },
                     {
                         icon = " ",
                         key = "c",
@@ -54,7 +63,13 @@ return {
                         action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})",
                     },
                     { icon = " ", key = "s", desc = "Restore Session", section = "session" },
-                    { icon = "󰒲 ", key = "L", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
+                    {
+                        icon = "󰒲 ",
+                        key = "<leader>ax",
+                        desc = "Application Extentions",
+                        action = ":Lazy",
+                        enabled = package.loaded.lazy ~= nil,
+                    },
                     { icon = " ", key = "q", desc = "Quit", action = ":qa" },
                 },
                 header = [[
