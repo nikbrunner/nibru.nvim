@@ -47,16 +47,14 @@ return {
                 winblend = 10,
                 -- Whether to automatically show the window when new completion items are available
                 auto_show = true,
-
                 -- Controls how the completion items are rendered on the popup window
                 draw = {
                     -- Aligns the keyword you've typed to a component in the menu
                     align_to = "label", -- or 'none' to disable
                     -- Left and right padding, optionally { left, right } for different padding on each side
-                    padding = 1,
+                    padding = 2,
                     -- Gap between columns
-                    gap = 1,
-
+                    gap = 2,
                     -- Components to render, grouped by column
                     columns = { { "kind_icon" }, { "label", "label_description", gap = 1 } },
                     -- for a setup similar to nvim-cmp: https://github.com/Saghen/blink.cmp/pull/245#issuecomment-2463659508
