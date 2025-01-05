@@ -4,7 +4,7 @@ local M = {}
 ---@type LazyPluginSpec
 M.spec = {
     "otavioschwanck/arrow.nvim",
-    event = "BufEnter",
+    event = "VimEnter",
     opts = {
         leader_key = ";",
         buffer_leader_key = "gm",
