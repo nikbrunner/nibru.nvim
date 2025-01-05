@@ -17,7 +17,7 @@ return {
             },
         },
 
-        delay = 150,
+        delay = 250,
 
         ---@type (string|wk.Sorter)[]
         --- Mappings are sorted using configured sorters and natural sort of the keys
